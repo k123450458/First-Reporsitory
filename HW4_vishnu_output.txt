@@ -1,0 +1,40 @@
+0x02719822     sub  $S3,$S3,$S1     
+0x02929022     sub  $S2,$S4,$S2     
+0x02979822     sub  $S3,$S4,$S7     
+0x0211b822     sub  $S7,$S0,$S1     
+0x02d7a020     add  $S4,$S6,$S7        # Data Hazard with $s7 and previous inst; Forward B = 10
+0x0271b020     add  $S6,$S3,$S1     
+0x02b39022     sub  $S2,$S5,$S3     
+0x02529820     add  $S3,$S2,$S2    # Data Hazard with $s2 and previous inst; Forward A = 10   # Data Hazard with $s2 and previous inst; Forward B = 10
+0x02148020     add  $S0,$S0,$S4     
+0x02508022     sub  $S0,$S2,$S0        # Data Hazard with $s0 and previous inst; Forward B = 10
+0x0233a820     add  $S5,$S1,$S3     
+0x02928022     sub  $S0,$S4,$S2        #Data Hazard with $s2 and two inst ago; Forward B = 01
+0x02b7a020     add  $S4,$S5,$S7        #Data Hazard with $s5 and two inst ago; Forward A = 01
+0x02f59020     add  $S2,$S7,$S5     
+0x02b38822     sub  $S1,$S5,$S3     
+0x02548822     sub  $S1,$S2,$S4        #Data Hazard with $s2 and two inst ago; Forward A = 01
+0x02b48820     add  $S1,$S5,$S4     
+0x02779822     sub  $S3,$S3,$S7     
+0x02b5a820     add  $S5,$S5,$S5        #Data Hazard with $s5 and two inst ago; Forward B = 01
+0x02940022     sub  $S0,$S4,$S4     
+0x02739822     sub  $S3,$S3,$S3     
+0x00179022     sub  $S2,$S0,$S7        #Data Hazard with $s0 and two inst ago; Forward A = 01
+0x02949020     add  $S2,$S4,$S4     
+0x0271b820     add  $S7,$S3,$S1     
+0x0253a820     add  $S5,$S2,$S3        #Data Hazard with $s2 and two inst ago; Forward A = 01
+0x0274b820     add  $S7,$S3,$S4     
+0x02b3a820     add  $S5,$S5,$S3        #Data Hazard with $s5 and two inst ago; Forward A = 01
+0x02178822     sub  $S1,$S0,$S7     
+0x02b18022     sub  $S0,$S5,$S1        # Data Hazard with $s1 and previous inst; Forward B = 10   #Data Hazard with $s5 and two inst ago; Forward A = 01
+0x02b6b822     sub  $S7,$S5,$S6     
+0x0274b022     sub  $S6,$S3,$S4     
+0x0292b822     sub  $S7,$S4,$S2     
+0x0257a020     add  $S4,$S2,$S7        # Data Hazard with $s7 and previous inst; Forward B = 10
+0x02368822     sub  $S1,$S1,$S6     
+0x0231b020     add  $S6,$S1,$S1    # Data Hazard with $s1 and previous inst; Forward A = 10   # Data Hazard with $s1 and previous inst; Forward B = 10
+0x0237b022     sub  $S6,$S1,$S7        #Data Hazard with $s1 and two inst ago; Forward A = 01
+0x02f2a820     add  $S5,$S7,$S2     
+0x02539020     add  $S2,$S2,$S3     
+0x02739820     add  $S3,$S3,$S3     
+0x02b2b022     sub  $S6,$S5,$S2        #Data Hazard with $s2 and two inst ago; Forward B = 01

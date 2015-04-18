@@ -1,0 +1,126 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedReader;
+public class HW4_vishnu3 
+{
+	public static void main(String[] args) throws IOException
+	{
+			FileReader inputStream = null;
+			FileWriter outputStream = null;
+			BufferedReader brd = null;
+			try
+			{
+				inputStream = new FileReader("C:\\Users\\VISHNUTHEJA\\Desktop\\HW4_Instuctions.txt");
+				outputStream = new FileWriter("C:/Users/VISHNUTHEJA/Desktop/HW4_vishnu_output.txt");
+				brd = new BufferedReader(inputStream);
+			//	boolean b = true;
+				String optr1,optr2,optr3,optr,c,d;
+				int optr11,optr22,optr33;
+				int[] array1 = {9,9,9,9,9,9,9,9,9};
+				int check=1;
+				String error = " ";
+				while(true)
+				{
+					String a = brd.readLine();
+					        if (a != null)
+					         {
+						d = a.substring(2);
+//						System.out.println(a);
+						int i = Integer.parseInt(d,16);
+						c = Integer.toBinaryString(i);
+						while(c.length() < 26)
+						{
+							 c = "0" + c;
+						}
+						optr1 = c.substring(12,15);
+                         					optr11 = Integer.parseInt(optr1,2);
+						optr2 = c.substring(2,5);
+                        					optr22 = Integer.parseInt(optr2,2);
+						optr3 = c.substring(7,10);
+                        					optr33 = Integer.parseInt(optr3,2);
+                         					optr  = c.substring(24,25);
+     					           if (Integer.parseInt(optr,2) == 1) 
+						{
+							optr = "sub";
+						}
+						else 
+						{
+						System.out.println("in add");
+							optr = "add";
+						}
+						if (array1[0] == 9)
+						{
+						array1[0] = optr11;
+						array1[1] = optr22;
+						array1[2] = optr33;
+						} else if (array1[3] == 9)
+						{
+						array1[3] = optr11;
+						array1[4] = optr22;
+						array1[5] = optr33;
+						}else if (array1[6] == 9)
+						{
+						array1[6] = optr11;
+						array1[7] = optr22;
+						array1[8] = optr33;
+						}else
+						{                            
+							array1[0] = array1[3];
+							array1[1] = array1[4];
+							array1[2] = array1[5];
+							array1[3] = array1[6];
+							array1[4] = array1[7];
+							array1[5] = array1[8];
+						    array1[6] = optr11;
+						    array1[7] = optr22;
+						    array1[8] = optr33;								
+						}
+						if (array1[3] != 9)
+						{
+							if (array1[7] == array1[3])
+							{
+							  error = "# Data Hazard with $s" + optr22 +" and previous inst; Forward A = 10";
+							}
+							if (array1[8] == array1[3])
+							{
+								 error = error + "   # Data Hazard with $s" + optr33 +" and previous inst; Forward B = 10";
+							}
+						}
+						if (array1[6] != 9)
+						{
+							if (array1[0] == array1[7])
+							{
+								 error = error + "   #Data Hazard with $s" + optr22 +" and two inst ago; Forward A = 01";
+							}
+							if (array1[0] == array1[8])
+							{
+								 error = error + "   #Data Hazard with $s" + optr33 +" and two inst ago; Forward B = 01";
+							}
+						}	
+						String output=null;
+						if(check==1){
+						output = "\r"+ a +"     "+ optr + "  $S"+optr11 +",$S"+optr22 + ",$S"+optr33 + "    "+error ;
+						}else{
+							output = "\r\n"+ a +"     "+ optr + "  $S"+optr11 +",$S"+optr22 + ",$S"+optr33 + "    "+error ;
+						}
+						check++;
+						System.out.println(output);
+						outputStream.write(output);
+						error = " ";
+					
+					}
+					else break;
+				}
+			 }
+		 finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            if (outputStream != null) {
+                outputStream.close();
+            }
+            brd.close();
+        }
+	}
+}
